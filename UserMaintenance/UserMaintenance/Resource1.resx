@@ -123,6 +123,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>Keresztnév</value>
   </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Teljesnév</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Vezetéknév</value>
   </data>
