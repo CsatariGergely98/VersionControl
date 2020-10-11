@@ -16,8 +16,7 @@ namespace Var
     {
         PortfolioEntities context = new PortfolioEntities();
         List<Tick> Ticks;
-        List<PortfolioItem> Portfolio = new List<PortfolioItem>();
-        //hzuihuidfd
+        List<PortfolioItem> Portfolio = new List<PortfolioItem>();        
 
         public Form1()
         {
@@ -67,29 +66,35 @@ namespace Var
             }
             return value;          
         }
-        private void button1_Click(object sender, EventArgs e)
+       
+        private void Button1_Click_1(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
 
             sfd.InitialDirectory = Application.StartupPath;
             sfd.Filter = " (.txt)|.txt";
             sfd.DefaultExt = "txt";
-            sfd.AddExtension = true;            
+            sfd.AddExtension = true;
 
             if (sfd.ShowDialog() != DialogResult.OK) return;
 
             using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
             {
-                foreach (var b in Ticks)
+                sw.WriteLine("Időszak\tNyereség");
+                int intervalum = 30;
+                DateTime kezdőDátum = (from x in Ticks select x.TradingDay).Min();
+                DateTime záróDátum = new DateTime(2016, 12, 30);
+                TimeSpan z = záróDátum - kezdőDátum;
+                for (int i = 0; i < z.Days - intervalum; i++)
                 {
-                    sw.Write(b.Index);
-                    sw.Write(b.TradingDay);
-                    sw.Write(b.Price);
-                    sw.Write(b.Volume);                    
+                    decimal ny = GetPortfolioValue(kezdőDátum.AddDays(i + intervalum))
+                               - GetPortfolioValue(kezdőDátum.AddDays(i));
+                  
+                    sw.WriteLine(i + "\t" + ny);
                 }
+
+               
             }
         }
-
-
     }
 }
