@@ -85,7 +85,7 @@ namespace Var
                     sw.Write(b.Index);
                     sw.Write(b.TradingDay);
                     sw.Write(b.Price);
-                    sw.Write(b.Volume);
+                    sw.Write(b.Volume);                    
                 }
             }
         }
