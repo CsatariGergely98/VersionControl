@@ -32,7 +32,7 @@ namespace hatodikhet
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = Currencies[0],
+                currencyNames = Currencies.ToString(),
                 startDate = dateTimePicker1.Value.ToString(),
                 endDate = dateTimePicker2.Value.ToString(),
             };
@@ -104,7 +104,7 @@ namespace hatodikhet
 
             var request = new GetExchangeRatesRequestBody()
             {
-                currencyNames = Currencies[0],
+                currencyNames = Currencies.ToString(),
                 startDate = dateTimePicker1.Value.ToString(),
                 endDate = dateTimePicker2.Value.ToString(),
             };
