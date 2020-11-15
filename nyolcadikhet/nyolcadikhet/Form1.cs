@@ -77,7 +77,10 @@ namespace nyolcadikhet
 
         private void btnSelectBall_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = btnColor_Click.BackColor
+            };
         }
 
         private void BtnColor_Click_Click(object sender, EventArgs e)
