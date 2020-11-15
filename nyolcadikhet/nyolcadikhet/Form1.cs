@@ -15,8 +15,11 @@ namespace nyolcadikhet
     public partial class Form1 : Form
     {
         private List<Toy> _toys = new List<Toy>();
+       
 
         private IToyFactory _factory;
+        private Toy _nextToy;
+
         public IToyFactory Factory
         {
             get { return _factory; }
@@ -31,8 +34,8 @@ namespace nyolcadikhet
             if (_nextToy != null)
                 Controls.Remove(_nextToy);
             _nextToy = Factory.CreateNew();
-            _nextToy.Top = lblNext.Top + lblNext.Height + 20;
-            _nextToy.Left = lblNext.Left;
+            _nextToy.Top = label1.Top + label1.Height + 20;
+            _nextToy.Left = label1.Left;
             Controls.Add(_nextToy);
         }
 
@@ -87,5 +90,6 @@ namespace nyolcadikhet
                 return;
             button.BackColor = colorPicker.Color;
         }
+
     }
 }
